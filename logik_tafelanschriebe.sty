@@ -1,0 +1,79 @@
+\RequirePackage{scrpage2}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[ngerman]{babel}
+\RequirePackage[german]{babelbib}
+\RequirePackage{microtype}
+\RequirePackage{pifont}
+\RequirePackage{lmodern}
+\RequirePackage{latexsym,amssymb,amsmath,mathdots}
+% \RequirePackage{txfonts}
+% \RequirePackage[scaled=.9]{helvet}
+\RequirePackage{xspace}
+\RequirePackage[pdfborder={0 0 0}]{hyperref}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\usetikzlibrary{automata,positioning,arrows.meta,shapes.geometric,calc}
+\RequirePackage{ifthen}
+
+\RequirePackage{chngcntr}
+\counterwithout{figure}{section}
+\renewcommand\thefigure{\arabic{figure}}
+
+\renewcommand\floatpagefraction{.99}
+\renewcommand\topfraction{.99}
+\renewcommand\bottomfraction{.99}
+\renewcommand\textfraction{.01}
+
+
+\newcommand{\textbfsf}[1]{\textbf{\textsf{#1}}}
+\newcommand{\textsfbf}[1]{\textbf{\textsf{#1}}}
+
+% Beweisumgebung
+\newcommand{\qedsymbol}{\ding{111}}
+\newcommand{\qedhere}{\hspace*{\fill}\qedsymbol}
+\newcommand{\quasiqedhere}{\hspace*{\fill}(\qedsymbol)}
+\newenvironment{beweis}{%
+  \par\medskip\noindent
+  \textup{\textsfbf{Beweis.}}
+}{%
+%   \hspace*{\fill}\qedsymbol
+  \par\smallskip\noindent
+}
+
+% ----- Frakturbuchstaben -----
+\newcommand{\Amf}{\ensuremath{\mathfrak{A}}\xspace}
+\newcommand{\Bmf}{\ensuremath{\mathfrak{B}}\xspace}
+\newcommand{\Imf}{\ensuremath{\mathfrak{I}}\xspace}
+\newcommand{\Nmf}{\ensuremath{\mathfrak{N}}\xspace}
+
+% ----- kalligrafische Buchstaben -----
+\newcommand{\Amc}{\ensuremath{\mathcal{A}}\xspace}
+\newcommand{\Gmc}{\ensuremath{\mathcal{G}}\xspace}
+\newcommand{\Kmc}{\ensuremath{\mathcal{K}}\xspace}
+\newcommand{\Omc}{\ensuremath{\mathcal{O}}\xspace}
+\newcommand{\Umc}{\ensuremath{\mathcal{U}}\xspace}
+
+% ----- Carstens phi-Abkürzung -----
+\newcommand{\vp}{\ensuremath{\varphi}\xspace}
+
+% ----- Makros für lineare Strukturen und deren Labels -----
+\newcommand{\linstruc}[1]{%
+  \node[state] (elem0) {0};
+  \foreach \x [remember=\x as \lastx (initially 0)] in {1,...,#1} {
+      \node[state] (elem\x) [right=of elem\lastx] {\x};
+      \path[->] (elem\lastx) edge node[above] {$s$} (elem\x);
+  };
+
+  \path[->] (elem#1) edge[loop right] node[right] {$s$} ();
+}
+
+% 1st param: location of label w.r.t. to element (default: above)
+% 2nd param: distance to element
+% 3rd param: element name
+% 4th param: alignment among labels
+% 5th param: label text (without "tabular")
+\newcommand{\linstruclab}[5][above]{%
+  \node [#1=#2 of elem#3] {\begin{tabular}{@{}#4@{}}#5\end{tabular}};
+}
+
