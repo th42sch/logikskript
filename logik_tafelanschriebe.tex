@@ -5885,53 +5885,114 @@ Nun können wir mittels eines Tupels $\overline{x}$ Schrittzähler und Bandposit
 
 \goodbreak
 % ===================================================================
-\section*{T4.23~ Konjunkt {\boldmath $\psi_{\textsf{ok}}$} im Beweis von Fagins Theorem}
+\section*{T4.23~ Bestandteile der Formel {\boldmath $\psi$} im Beweis Satz von Fagin}
 
-Das Konjunkt $\psi_{\textsf{ok}}$ der FO-Formel $\psi$ soll sicherstellen,
-dass Bandsymbole und Zustände eindeutig sind, d.\,h.,
-an jeder Bandposition (repräsentiert durch ein $k'$-Tupel $\overline{p}$)
-steht zu jedem Zeitpunkt der Berechnung
-(Schrittzähler, repräsentiert durch ein $k'$-Tupel~$\overline{t}$)
-höchstens ein Zeichen $a_i$ des Arbeitsalphabets
-(repräsentiert durch eine $k'$-stellige Relationsvariable $T_{a_i}$),
-und wenn dort der Schreib-Lese-Kopf steht,
-dann in höchstens einem Zustand
-(repräsentiert durch eine $k'$-stellige Relationsvariable $H_{q_i}$);
-außerdem kann der Schreib-Lese-Kopf dann an keiner weiteren Position $\overline{p}'$ stehen.
-Dies kann wie folgt ausgedrückt werden:
-%
-\begin{align*}
-  \psi_{\textsf{ok}} & ~=~
-  \forall\:\! \overline{p}~\forall\:\! \overline{t}~
-  \Bigg(
-    \bigvee_{1 \leq i \leq \ell} \bigg(
-      T_{a_i}(\overline{p},\overline{t}) \land
-      \bigwedge_{\substack{1 \leq j \leq \ell\\j \neq i}} \lnot T_{a_j}(\overline{p},\overline{t})
-    \bigg)
-  \Bigg)
-  ~~\land \\
-  & \hspace*{8mm}
-  \forall\:\! \overline{t}~\exists\:\! \overline{p}~
-  \Bigg(
-    \bigvee_{1 \leq i \leq m} \bigg(
-      H_{q_i}(\overline{p},\overline{t}) \land
-      \bigwedge_{\substack{1 \leq j \leq m\\j \neq i}} \lnot H_{q_j}(\overline{p},\overline{t})
-    \bigg)
-  \\
-  & \hspace*{22mm}
-  \land~~ \forall\:\! \overline{p}'~
-  \bigg(
-    \overline{p} \neq \overline{p}' \to
-    \bigwedge_{1 \leq i \leq m} \lnot H_{q_i}(\overline{p}',\overline{t})
-  \bigg)\Bigg)
-\end{align*}
-%
-Die übrigen Konjunkte von $\psi$ lassen sich analog konstruieren;
-dabei ist $\psi_{\textsf{ini}}$ am technischsten,
-dann dazu müssen Addition und Multiplikation von natürlichen Zahlen
-ESO-definiert werden.
-Weitere Details kann man z.\,B.\ in \cite{EF99,Imm99} nachlesen.
-
+\begin{itemize}
+  \item
+    {\boldmath $\psi_{\textsf{ok}}$}
+    \par
+    Dieses Konjunkt soll sicherstellen,
+    dass Bandsymbole und Zustände eindeutig sind, d.\,h.,
+    an jeder Bandposition (repräsentiert durch ein $k'$-Tupel $\overline{p}$)
+    steht zu jedem Zeitpunkt der Berechnung
+    (Schrittzähler, repräsentiert durch ein $k'$-Tupel~$\overline{t}$)
+    höchstens ein Zeichen $a_i$ des Arbeitsalphabets
+    (repräsentiert durch eine $k'$-stellige Relationsvariable $T_{a_i}$),
+    und wenn dort der Schreib-Lese-Kopf steht,
+    dann in höchstens einem Zustand
+    (repräsentiert durch eine $k'$-stellige Relationsvariable $H_{q_i}$);
+    außerdem kann der Schreib-Lese-Kopf dann an keiner weiteren Position $\overline{p}'$ stehen.
+    Dies kann wie folgt ausgedrückt werden:
+    %
+    \begin{align*}
+      \psi_{\textsf{ok}} & ~=~
+      \forall\:\! \overline{p}~\forall\:\! \overline{t}~
+      \Bigg(
+        \bigvee_{1 \leq i \leq \ell} \bigg(
+          T_{a_i}(\overline{p},\overline{t}) \land
+          \bigwedge_{\substack{1 \leq j \leq \ell\\j \neq i}} \lnot T_{a_j}(\overline{p},\overline{t})
+        \bigg)
+      \Bigg)
+      ~~\land \\
+      & \hspace*{8mm}
+      \forall\:\! \overline{t}~\exists\:\! \overline{p}~
+      \Bigg(
+        \bigvee_{1 \leq i \leq m} \bigg(
+          H_{q_i}(\overline{p},\overline{t}) \land
+          \bigwedge_{\substack{1 \leq j \leq m\\j \neq i}} \lnot H_{q_j}(\overline{p},\overline{t})
+        \bigg)
+      \\
+      & \hspace*{22mm}
+      \land~~ \forall\:\! \overline{p}'~
+      \bigg(
+        \overline{p} \neq \overline{p}' \to
+        \bigwedge_{1 \leq i \leq m} \lnot H_{q_i}(\overline{p}',\overline{t})
+      \bigg)\Bigg)
+    \end{align*}
+  \item
+    {\boldmath $\psi_{\textsf{move}}$}
+    \par
+    Dieses Konjunkt drückt aus, dass zwei aufeinander folgende Konfigurationen
+    entweder der Übergangsrelation $\Delta$ der Maschine entsprechen
+    oder in einem akzeptierenden oder verwerfenden Zustand verbleiben
+    (falls vor Erreichen der $n^k$ Schritte ein solcher Zustand erreicht wird,
+    wird er aus technischen Gründen in den folgenden Zeitpunkten einfach beibehalten):
+    \begin{align*}
+      \psi_{\textsf{move}} & ~=~
+      \forall\:\! \overline{t}~
+      \forall\:\! \overline{t}' \Bigg(
+        \varphi_{\textsf{nf}}(\overline{t},\overline{t}') ~\to
+        \bigvee_{(q,a,q',b,M) \in \Delta} \alpha_{q,a,q',b,M} (\overline{t},\overline{t}') ~\lor~
+        \psi_{\textsf{term}} (\overline{t},\overline{t}')
+      \Bigg),
+      \intertext{wobei}
+      \alpha_{q,a,q',b,\text{{\boldmath $R$}}} (\overline{t},\overline{t}') & ~=~
+      \exists\:\! \overline{p}~
+      \exists\:\! \overline{p}' \Bigg(
+        H_q (\overline{p},\overline{t}) \land T_a (\overline{p},\overline{t}) \land
+        H_{q'} (\overline{p}',\overline{t}') \land T_b (\overline{p}',\overline{t}') \land
+        \text{{\boldmath $\varphi_{\textsf{nf}} (\overline{t},\overline{t}')$}}
+      \Bigg), \\
+      \alpha_{q,a,q',b,\text{{\boldmath $L$}}} (\overline{t},\overline{t}') & ~=~
+      \exists\:\! \overline{p}~
+      \exists\:\! \overline{p}' \Bigg(
+        H_q (\overline{p},\overline{t}) \land T_a (\overline{p},\overline{t}) \land
+        H_{q'} (\overline{p}',\overline{t}') \land T_b (\overline{p}',\overline{t}') \land
+        \text{{\boldmath $\varphi_{\textsf{nf}} (\overline{t}',\overline{t})$}}
+      \Bigg)
+      \intertext{und}
+      \psi_{\textsf{term}} (\overline{t},\overline{t}') & ~=~
+      \exists\:\! \overline{p}
+      \bigvee_{q \in Q_A \cup Q_R}\Bigg(
+        H_q (\overline{p},\overline{t}) \land
+        H_q (\overline{p},\overline{t}')
+      \Bigg).
+    \end{align*}
+  \item
+    {\boldmath $\psi_{\textsf{acc}}$}
+    \par
+    Für dieses Konjunkt genügt wegen der obigen Beobachtung über akzeptierende (und verwerfende) Zustände:
+    \[
+      \psi_{\textsf{acc}}  ~=~
+      \exists\:\! \overline{p}~
+      \exists\:\! \overline{t}
+      \bigvee_{q \in Q_A}\Bigg(
+        H_q (\overline{p},\overline{t})
+      \Bigg)
+    \]
+  \item
+    {\boldmath $\psi_{\textsf{const}}$}
+    \par
+    Dieses Konjunkt lässt sich leicht analog konstruieren;
+    probiert es selbst aus.
+  \item
+    {\boldmath $\psi_{\textsf{ini}}$}
+    \par
+    Dies ist das technisch aufwändigste Konjunkt,
+    denn dazu müssen Addition und Multiplikation von natürlichen Zahlen
+    ESO-definiert werden.
+    Weitere Details kann man z.\,B.\ in \cite{EF99,Imm99} nachlesen.
+\end{itemize}
 
 % ===================================================================
 % ===================================================================
