@@ -5867,7 +5867,7 @@ verwenden wir zusätzlich eine strikte lineare Ordnung über $A^{k'}$.
 Diese repräsentieren wir mittels einer $2k'$-stelligen Relationsvariable $L$ wie folgt.
 %
 \begin{align*}
-  \varphi_{\textsf{lin}} & \,:=\, \exists L\,\bigg(L \text{~ist irreflexiv, antisymmetrisch, transitiv} \\
+  \varphi_{\textsf{lin}} & \,:=\, \exists L\,\bigg(L \text{~ist irreflexiv, antisymmetrisch, transitiv} \\[-.7\baselineskip]
                          & \hspace*{16mm} \land~~ \forall\:\!\overline{x}\,\forall\:\!\overline{y}\,
                                           \Big(\overline{x} \neq \overline{y} \to \big(L(\overline{x},\overline{y}) \lor L(\overline{y},\overline{x})\big)\Big)\bigg),
 \end{align*}
@@ -5883,6 +5883,7 @@ benötigt man noch die Nachfolgerrelation auf $L$, die man wie folgt definieren 
 %
 Nun können wir mittels eines Tupels $\overline{x}$ Schrittzähler und Bandposition repräsentieren.
 
+\goodbreak
 % ===================================================================
 \section*{T4.23~ Konjunkt {\boldmath $\psi_{\textsf{ok}}$} im Beweis von Fagins Theorem}
 
@@ -5903,9 +5904,9 @@ Dies kann wie folgt ausgedrückt werden:
   \psi_{\textsf{ok}} & ~=~
   \forall\:\! \overline{p}~\forall\:\! \overline{t}~
   \Bigg(
-    \bigvee_{1 \leq i \leq p} \bigg(
+    \bigvee_{1 \leq i \leq \ell} \bigg(
       T_{a_i}(\overline{p},\overline{t}) \land
-      \bigwedge_{\substack{1 \leq j \leq p\\j \neq i}} \lnot T_{a_j}(\overline{p},\overline{t})
+      \bigwedge_{\substack{1 \leq j \leq \ell\\j \neq i}} \lnot T_{a_j}(\overline{p},\overline{t})
     \bigg)
   \Bigg)
   ~~\land \\

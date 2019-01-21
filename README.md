@@ -9,6 +9,6 @@ Hier findet Ihr die Tafelanschriebe für die Vorlesung „Logik“. Wer Fehler f
 
 ## Versionsgeschichte
 
-**20.&thinsp;1.&thinsp;2019**&nbsp; Korrektur in T4.19
+**20.&ndash;21.&thinsp;1.&thinsp;2019**&nbsp; Korrekturen in T4.19, T4.23
 
 **14.&thinsp;1.&thinsp;2019**&nbsp; 1. Commit; kleine Ergänzungen/Korrekturen in T4.10–T4.12
