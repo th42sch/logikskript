@@ -1,16 +1,12 @@
 # Logikskript
-Hier findet Ihr die Tafelanschriebe für die Vorlesung „Logik“. Wer Fehler findet oder Verbesserungsvorschläge hat, legt bitte ein neues Issue an oder schreibt mir eine E-Mail.
+Hier findet Ihr die Tafelanschriebe für die Vorlesung „Logik“. Wer Fehler findet oder Verbesserungsvorschläge hat, legt bitte ein neues Issue an oder schreibt uns eine E-Mail.
 
 ## PDF-Datei
 
 … findet Ihr im Ordner PDF. Wenn Ihr die Quellen selbst kompilieren möchtet, dann benutzt
-<code>make</code> oder
-<code>pdflatex logik_tafelanschriebe</code>.
+<code>make</code> (oder
+<code>pdflatex</code> und <code>bibtex</code>).
 
-## Versionsgeschichte
+## Versionsgeschichte für WiSe 2019/20
 
-**21.&thinsp;1.&thinsp;2019**&nbsp; Ergänzung in T4.23
-
-**20.&thinsp;1.&thinsp;2019**&nbsp; Korrektur in T4.19
-
-**14.&thinsp;1.&thinsp;2019**&nbsp; 1. Commit; kleine Ergänzungen/Korrekturen in T4.10–T4.12
+**2.10.19**&nbsp; Aktualisierung auf WiSe 2019/20
