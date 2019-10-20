@@ -9,4 +9,6 @@ Hier findet Ihr die Tafelanschriebe für die Vorlesung „Logik“. Wer Fehler f
 
 ## Versionsgeschichte für WiSe 2019/20
 
+**20.10.19**&nbsp; kleinere Aktualisierung der Literaturangaben
+
 **2.10.19**&nbsp; Aktualisierung auf WiSe 2019/20
