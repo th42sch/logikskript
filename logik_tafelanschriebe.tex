@@ -451,26 +451,26 @@ und läuft in polynomieller Zeit.
       Angenommen, der Algorithmus antwortet bei Eingabe $\varphi$ "`erfüllbar"'.
       Sei $V$ die dabei berechnete Menge, betrachtet als Belegung.
       Wir zeigen: $V \models \varphi$.
-      Dazu genügt es zu zeigen, dass für jedes Konjunkt $c$ von $\varphi$ gilt: $V \models c$.
-      Sei also $c$ ein Konjunkt von $\varphi$. Wir unterscheiden drei Fälle.
+      Dazu genügt es zu zeigen, dass für jedes Konjunkt $C$ von $\varphi$ gilt: $V \models C$.
+      Sei also $C$ ein Konjunkt von $\varphi$. Wir unterscheiden drei Fälle.
       \begin{enumerate}
         \item
-          $c = x$~ (Fakt).
+          $C = x$~ (Fakt).
           \par
           Dann ist $x \in V$ wegen Zeile 1 des Algorithmus, also $V \models x$.
         \item
-          $c = x_1 \land \dots \land x_n \to x$~ (Regel).
+          $C = x_1 \land \dots \land x_k \to x$~ (Regel).
           \par
-          Wenn $\{x_1,\dots,x_n\} \nsubseteq V$,
-          dann $V \models c$.
+          Wenn $\{x_1,\dots,x_k\} \nsubseteq V$,
+          dann $V \models C$.
           Anderenfalls muss $x \in V$ sein (wegen Zeilen 2--4)
-          und damit ebenfalls $V \models c$.
+          und damit ebenfalls $V \models C$.
         \item
-          $c = x_1 \land \dots \land x_n \to 0$~ (Constraint).
+          $C = x_1 \land \dots \land x_k \to 0$~ (Constraint).
           \par
           Da der Algorithmus "`erfüllbar"' antwortet,
-          muss wegen Zeile 5 $\{x_1,\dots,x_n\} \nsubseteq V$ gelten,
-          also $V \models c$.
+          muss wegen Zeile 5 $\{x_1,\dots,x_k\} \nsubseteq V$ gelten,
+          also $V \models C$.
       \end{enumerate}
     \item[$(\Leftarrow)$]
       Angenommen $\varphi$ sei erfüllbar.
@@ -481,13 +481,13 @@ und läuft in polynomieller Zeit.
         V \subseteq \hat V \quad \text{für alle Modelle $\hat V$ von $\varphi$}
       \end{equation*}
       Um nun zu zeigen, dass der Algorithmus "`erfüllbar"' antwortet,
-      betrachten wir ein beliebiges Konjunkt $x_1 \land \dots \land x_n \to 0$ von $\varphi$.
-      Für dieses müssen wir zeigen: $\{x_1,\dots,x_n\} \nsubseteq V$.
-      Angenommen $\{x_1,\dots,x_n\} \subseteq V$.
+      betrachten wir ein beliebiges Konjunkt $x_1 \land \dots \land x_k \to 0$ von $\varphi$.
+      Für dieses müssen wir zeigen: $\{x_1,\dots,x_k\} \nsubseteq V$.
+      Angenommen $\{x_1,\dots,x_k\} \subseteq V$.
       Da $\varphi$ nach Voraussetzung erfüllbar ist,
       gibt es ein Modell $\hat V$ von $\varphi$.
-      Mit $(*)$ gilt $\hat V \models x_1 \land \dots \land x_n$,
-      also $\hat V \not\models x_1 \land \dots \land x_n \to 0$,
+      Mit $(*)$ gilt $\hat V \models x_1 \land \dots \land x_k$,
+      also $\hat V \not\models x_1 \land \dots \land x_k \to 0$,
       was im Widerspruch zu $\hat V \models \varphi$ steht.\qedhere
   \end{description}
 %   ~\par\vspace*{-2.2\baselineskip}
