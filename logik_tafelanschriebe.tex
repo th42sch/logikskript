@@ -474,21 +474,21 @@ und läuft in polynomieller Zeit.
       \end{enumerate}
     \item[$(\Leftarrow)$]
       Angenommen $\varphi$ sei erfüllbar.
-      Man zeigt leicht per Induktion über die Anzahl der Schleifendurchläufe:
+      Man zeigt leicht per Induktion über die Anzahl der Schleifendurchläufe
       in Zeilen 2--4:
       \begin{equation*}
         \tag{$*$}
-        V \subseteq \hat V \quad \text{für alle Modelle $\hat V$ von $\varphi$}
+        V \subseteq \widehat V \quad \text{für alle Modelle $\widehat V$ von $\varphi$}
       \end{equation*}
       Um nun zu zeigen, dass der Algorithmus "`erfüllbar"' antwortet,
       betrachten wir ein beliebiges Konjunkt $x_1 \land \dots \land x_k \to 0$ von $\varphi$.
       Für dieses müssen wir zeigen: $\{x_1,\dots,x_k\} \nsubseteq V$.
       Angenommen $\{x_1,\dots,x_k\} \subseteq V$.
       Da $\varphi$ nach Voraussetzung erfüllbar ist,
-      gibt es ein Modell $\hat V$ von $\varphi$.
-      Mit $(*)$ gilt $\hat V \models x_1 \land \dots \land x_k$,
-      also $\hat V \not\models x_1 \land \dots \land x_k \to 0$,
-      was im Widerspruch zu $\hat V \models \varphi$ steht.\qedhere
+      gibt es ein Modell $\widehat V$ von $\varphi$.
+      Mit $(*)$ gilt $\widehat V \models x_1 \land \dots \land x_k$,
+      also $\widehat V \not\models x_1 \land \dots \land x_k \to 0$,
+      was im Widerspruch zu $\widehat V \models \varphi$ steht.\qedhere
   \end{description}
 %   ~\par\vspace*{-2.2\baselineskip}
 \end{beweis}%
