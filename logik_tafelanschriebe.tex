@@ -584,153 +584,158 @@ Also ist:
 \end{align*}
 
 % ===================================================================
-\newcommand{\TBewResSatz}{T1.15}
-\section*{\hypertarget{TBewResSatz}{\TBewResSatz}~ Beweis Resolutionssatz}
+\newcommand{\TBewResSatzKorr}{T1.15}
+\section*{\hypertarget{TBewResSatzKorr}{\TBewResSatzKorr}~ Beweis Resolutionssatz, Korrektheit}
 
-\textsfbf{Theorem~1.31~ (Resolutionssatz, Robinson 1965).} \\
-Eine endliche Klauselmenge $M$ ist unerfüllbar ~gdw.~ $\Box \in \textsf{Res}^*(M)$.
+\textsfbf{Behauptung:}~ \\
+Wenn $M$ eine endliche Klauselmenge ist und $\Box \in \textsf{Res}^*(M)$,
+dann ist $M$ unerfüllbar.
+
+\par\noindent
+\begin{beweis}
+  Da $\Box \in \textsf{Res}^*(M)$, ist $\textsf{Res}^*(M)$ unerfüllbar.
+  Es genügt zu zeigen: $\textsf{Res}^*(M) \equiv M$
+
+  Mittels Resolutionslemma (Lemma~1.28) und per Induktion über $i$ zeigt man leicht:
+  \[
+%    \tag{$*$}
+    \textsf{Res}^i(M) \equiv M \quad\text{für alle~} i \geq 0
+  \]
+  Wegen Lemma~1.30\,(2) ist $\textsf{Res}^*(M) = \textsf{Res}^i(M)$ für ein $i \geq 0$.
+  Also $\textsf{Res}^*(M) \equiv M$.
+  \qedhere
+\end{beweis}
+
+% ===================================================================
+\section*{T1.16~ Beweis Hilfsaussage für Vollständigkeit}
+
+\textsfbf{Lemma~1.32.}~
+Wenn eine endliche Klauselmenge $M$ \emph{un}erfüllbar ist, dann gilt:
+%
+\begin{enumerate}
+  \item[(1)]
+    $M^+$ und $M^-$ sind \emph{un}erfüllbar;
+  \item[(2)]
+    $\Box \in \textsf{Res}^*(M)$ oder $\{\lnot x\} \in \textsf{Res}^*(M)$;
+  \item[(3)]
+    $\Box \in \textsf{Res}^*(M)$ oder $\{x\} \in \textsf{Res}^*(M)$.
+\end{enumerate}
 
 \par\noindent
 \begin{beweis}
   \tikzset{baseline=5mm, grow=up, level distance=12mm, sibling distance=-18mm}
-  \begin{description}
-    \item[\textsfbf{Richtung {\boldmath "`$\Leftarrow$"'.}}]~
-      (Korrektheit des Resolutionskalküls)
-      \par
-      Da $\Box \in \textsf{Res}^*(M)$, ist $\textsf{Res}^*(M)$ unerfüllbar.
-      Es genügt also zu zeigen: $\textsf{Res}^*(M) \equiv M$
-
-      Mittels Resolutionslemma und per Induktion über $i$ zeigt man leicht:
-      \[
-%        \tag{$*$}
-        \textsf{Res}^i(M) \equiv M \quad\text{für alle~} i \geq 0
-      \]
-      Wegen Lemma~1.30 (Terminierung) ist $\textsf{Res}^*(M) = \textsf{Res}^i(M)$ für ein $i \geq 0$.
-      Also $\textsf{Res}^*(M) \equiv M$.
-    \item[\textsfbf{Richtung {\boldmath "`$\Rightarrow$"'.}}]~
-      (Vollständigkeit des Resolutionskalküls)
-      \par
-      Wir zeigen
-      \[
-        M \text{~unerfüllbar~} ~\Rightarrow~ \Box \in \textsf{Res}^*(M)
-      \]
-      per Induktion über $|\textsf{Var}(M)|$
-      (denn jeder Resolutionsschritt entspricht dem Eliminieren einer Variable).
-      %
-      \begin{description}
-        \item[Induktionsanfang.]
-          ~\par
-          Wenn $|\textsf{Var}(M)| = 0$, dann $M = \emptyset$ oder $M = \{\Box\}$.
-          Der Fall $M = \emptyset$ wird dadurch ausgeschlossen, dass $\emptyset$ erfüllbar ist,%
-          \footnote{%
-            Zur Erinnerung: $V \models M$, wenn $V \models C$ für alle $C \in M$.
-            Wenn also $M = \emptyset$, dann ist \emph{jede} Belegung $V$ Modell von $M$.
-            Also ist $M = \emptyset$ erfüllbar.%
-          }
-          was der Voraussetzung widerspricht.
-          Also $M = \{\Box\}$ und damit $\Box \in \textsf{Res}^*(M)$.
-        \item[Induktionsschritt.]
-          Sei $|\textsf{Var}(M)| = n+1$ für ein $n \geq 0$.
-          Wähle eine Variable $x \in \textsf{Var}(M)$ und konstruiere die folgenden zwei Klauselmengen.
-          \begin{align*}
-            M^+ & \,=\, \{C \setminus \{\lnot x\}          \,\mid\, \phantom{\lnot} x \notin C \in M\} \\
-            M^- & \,=\, \{C \setminus \{x\}\phantom{\lnot} \,\mid\, \lnot x \notin C \in M\}
-          \end{align*}
-          Intuitiv entspricht $M^+$ dem Fall $V(x) = 1$:
-          alle Klauseln $C$ mit $x \in C$ sind erfüllt und werden gestrichen;
-          aus den verbliebenen Klauseln kann $\lnot x$ gestrichen werden (wenn vorhanden),
-          da es diese Klauseln nicht mehr wahr machen kann. Analoges gilt für $M^-$.
-
-          Wir zeigen nun:
-          %
-          \begin{enumerate}
-            \item[(1)]
-              $M^+$ und $M^-$ sind unerfüllbar.
-            \item[(2)]
-              $\Box \in \textsf{Res}^*(M)$ oder $\{\lnot x\} \in \textsf{Res}^*(M)$.
-            \item[(3)]
-              $\Box \in \textsf{Res}^*(M)$ oder $\{x\} \in \textsf{Res}^*(M)$.
-          \end{enumerate}
-          %
-          \begin{description}
-            \item[\textnormal{Zu (1).}]
-              ~\par
-              Angenommen, $M^+$ sei erfüllbar und $V \models M^+$.
-              Erweitere $V$ durch $V(x) = 1$.
-              Man prüft leicht, dass $V \models M$ (klauselweise, Fallunterscheidung ob 
+  \begin{enumerate}
+    \item[(1)]
+%      ~\par
+      Angenommen, $M^+$ sei erfüllbar und $V \models M^+$.
+      Erweitere $V$ durch $V(x) = 1$.
+      Man prüft leicht, dass $V \models M$ (klauselweise, Fallunterscheidung ob 
 %              $C \in M^+$).
-              $x \in C$ und Anwendung der Definition von $M^+$).
-              Dies widerspricht der Annahme, dass $M$ unerfüllbar ist.
-              Also ist $M^+$ unerfüllbar.
+      $x \in C$ und Anwendung der Definition von $M^+$).
+      Dies widerspricht der Annahme, dass $M$ unerfüllbar ist.
+      Also ist $M^+$ unerfüllbar.
 
-              Die Unerfüllbarkeit von $M^-$ wird analog begründet.
-            \item[\textnormal{Zu (2).}]
-              ~\par
-              $M^+$ hat nur $n$ Variablen, denn $x$ wurde gelöscht.
-              Also kann man auf $M^+$ die Induktionsvoraussetzung anwenden:
-              weil (wegen 1) $M^+$ unerfüllbar ist,
-              gilt $\Box \in \textsf{Res}^*(M^+)$.
-              Also gibt es Klauseln $C_1,\dots,C_m$, so dass $C_m = \Box$ 
-              und für alle $i \leq m$ gilt:
-              %
-              \begin{enumerate}
-                \item[(a)]
-                  $C_i \in M^+$\quad oder
-                \item[(b)]
-                  $C_i$ ist Resolvente von $C_j$ und $C_k$ für gewisse $j,k < i$.
-              \end{enumerate}
-              %
-              Nun können zwei Fälle eintreten:
-              %
-              \begin{enumerate}
-                \item
-                  Alle Klauseln $C_i$ der Form (a) sind auch in $M$
-                  (d.\,h.\ in keiner der "`Originalklauseln"' in $M$ kam $\lnot x$ vor).
-                  Dann prüft man leicht, dass $C_1, \dots, C_m \in \textsf{Res}^*(M)$,
-                  also insbesondere $\Box = C_m \in \textsf{Res}^*(M)$.
-                \item
-                  Für mindestens eine Klausel $C_i$ der Form (a) ist $C_i \cup \{\lnot x\} \in M$.
-                  Wir erhalten durch Wiedereinfügen von $\lnot x$ eine Folge von Klauseln
-                  \[
-                    C_1',\dots,C_m' \in \textsf{Res}^*(M),
-                  \]
-                  die bezeugt, dass $\{\lnot x\} \in \textsf{Res}^*(M)$:
+      Die Unerfüllbarkeit von $M^-$ wird analog begründet.
+    \item[(2)]
+%      ~\par
+      $M^+$ hat nur $n$ Variablen, denn $x$ wurde gelöscht.
+      Also kann man auf $M^+$ die Induktionsvoraussetzung anwenden:
+      weil wegen~(1) $M^+$ unerfüllbar ist,
+      gilt $\Box \in \textsf{Res}^*(M^+)$.
+      Also gibt es Klauseln $C_1,\dots,C_m$, so dass $C_m = \Box$ 
+      und für alle $i \leq m$ gilt:
+      %
+      \begin{enumerate}
+        \item[(a)]
+          $C_i \in M^+$\quad oder
+        \item[(b)]
+          $C_i$ ist Resolvente von $C_j$ und $C_k$ für gewisse $j,k < i$.
+      \end{enumerate}
+      %
+      Nun können zwei Fälle eintreten:
+      %
+      \begin{enumerate}
+        \item
+          Alle Klauseln $C_i$ der Form (a) sind auch in $M$
+          (d.\,h.\ in keiner der "`Originalklauseln"' in $M$ kam $\lnot x$ vor).
+          Dann prüft man leicht, dass $C_1, \dots, C_m \in \textsf{Res}^*(M)$,
+          also insbesondere $\Box = C_m \in \textsf{Res}^*(M)$.
+        \item
+          Für mindestens eine Klausel $C_i$ der Form (a) ist $C_i \cup \{\lnot x\} \in M$.
+          Wir erhalten durch Wiedereinfügen von $\lnot x$ eine Folge von Klauseln
+          \[
+            C_1',\dots,C_m' \in \textsf{Res}^*(M),
+          \]
+          die bezeugt, dass $\{\lnot x\} \in \textsf{Res}^*(M)$:
 
-                  \begin{center}
+          \begin{center}
 %                     \tikzset{>={Stealth[length=8pt, inset=1.6pt]}, baseline=-3pt}%
 %                     \tikzgraphsset{math nodes, nodes={draw,circle}, grow right=16mm, group shift=(-54:13mm)}%
-                    aus~~
-                    \tikz \node {$C_i$} child {node {$C_j$}} child {node {$C_k$}};
-                    ~~wird~~
-                    \tikz \node {$C_i \cup \{\lnot x\}$} child {node {$C_j \cup \{\lnot x\}$}} child {node {$C_k$}};
-                  \end{center}
-
-                  Wenn also das Literal $\lnot x$ an einer Stelle eingeführt wird,
-                  dann wird es auch an die jeweilige Resolvente weitergegeben.
-                  Am Ende wird aus $C_m = \Box$ dann $C'_m = \{\lnot x\}$,
-                  also $\{\lnot x\} \in \textsf{Res}^*(M)$.
-              \end{enumerate}
-            \item[\textnormal{Zu (3).}]
-              ~\par
-              Wird analog zu (2) bewiesen, unter Verwendung von $M^-$ statt $M^+$.
-          \end{description}
-          %
-          Aus (2) und (3) folgt nun, dass $\Box \in \textsf{Res}^*(M)$
-          oder $\{x\},\{\lnot x\} \in \textsf{Res}^*(M)$.
-          Aus letzterem folgt aber mit
-          %
-          \begin{center}
-            \tikz \node {$\Box$} child {node {$\{\lnot x\}$}} child {node {$\{x\}$}};
+            aus~~
+            \tikz \node {$C_i$} child {node {$C_j$}} child {node {$C_k$}};
+            ~~wird~~
+            \tikz \node {$C_i \cup \{\lnot x\}$} child {node {$C_j \cup \{\lnot x\}$}} child {node {$C_k$}};
           \end{center}
-          %
-          auch $\Box \in \textsf{Res}^*(M)$.\qedhere
-      \end{description}
-  \end{description}
-%   ~\par\vspace*{-2.2\baselineskip}
-\end{beweis}%
+
+          Wenn also das Literal $\lnot x$ an einer Stelle eingeführt wird,
+          dann wird es auch an die jeweilige Resolvente weitergegeben.
+          Am Ende wird aus $C_m = \Box$ dann $C'_m = \{\lnot x\}$,
+          also $\{\lnot x\} \in \textsf{Res}^*(M)$.
+      \end{enumerate}
+    \item[(3)]
+%      ~\par
+      Wird analog zu (2) bewiesen, unter Verwendung von $M^-$ statt $M^+$.
+      \qedhere
+  \end{enumerate}
+\end{beweis}
 
 % ===================================================================
-\section*{T1.16~ Beispiel Einheitsresolution}
+\section*{T1.17~ Beweis Resolutionssatz, Vollständigkeit}
+
+\textsfbf{Behauptung:}~ \\
+Wenn eine endliche Klauselmenge $M$ unerfüllbar ist, dann $\Box \in \textsf{Res}^*(M)$.
+
+\par\noindent
+\begin{beweis}
+  \tikzset{baseline=5mm, grow=up, level distance=12mm, sibling distance=-18mm}
+  Wir zeigen die gewünschte Implikation
+  per Induktion über $|\textsf{Var}(M)|$
+  (denn jeder Resolutionsschritt entspricht dem Eliminieren einer Variable).
+  %
+  \begin{description}
+    \item[Induktionsanfang.]
+      ~\par
+      Wenn $|\textsf{Var}(M)| = 0$, dann $M = \emptyset$ oder $M = \{\Box\}$.
+      Der Fall $M = \emptyset$ wird dadurch ausgeschlossen, dass $\emptyset$ erfüllbar ist,%
+      \footnote{%
+        Zur Erinnerung: $V \models M$, wenn $V \models C$ für alle $C \in M$.
+        Wenn also $M = \emptyset$, dann ist \emph{jede} Belegung $V$ Modell von $M$.
+        Also ist $M = \emptyset$ erfüllbar.%
+      }
+      was der Voraussetzung widerspricht.
+      Also $M = \{\Box\}$ und damit $\Box \in \textsf{Res}^*(M)$.
+    \item[Induktionsschritt.]
+      ~\par
+      Sei $|\textsf{Var}(M)| = n+1$ für ein $n \geq 0$.
+      Wähle eine Variable $x \in \textsf{Var}(M)$ und betrachten die Klauselmengen
+      $M^+$ und $M^-$, die auf Folien~55/56 definiert sind.
+      %
+      Aus Lemma 1.32~(2) und~(3) folgt nun, dass $\Box \in \textsf{Res}^*(M)$
+      oder $\{x\},\{\lnot x\} \in \textsf{Res}^*(M)$.
+      Aus letzterem folgt aber mit
+      %
+      \begin{center}
+        \tikz \node {$\Box$} child {node {$\{\lnot x\}$}} child {node {$\{x\}$}};
+      \end{center}
+      %
+      auch $\Box \in \textsf{Res}^*(M)$.
+      \qedhere
+  \end{description}
+\end{beweis}
+
+\pagebreak
+% ===================================================================
+\section*{T1.18~ Beispiel Einheitsresolution}
 
 Gegeben sei die Klauselmenge
 \[
@@ -772,9 +777,9 @@ aber wende \emph{nur Einheitsresolution} an.
 
 
 % ===================================================================
-\section*{T1.17~ Beweis Resolutionssatz für Einheitsresolution}
+\section*{T1.19~ Beweis Resolutionssatz für Einheitsresolution}
 
-\textsfbf{Theorem~1.36~ (Resolutionssatz für Einheitsresolution).} \\
+\textsfbf{Theorem~1.37~ (Resolutionssatz für Einheitsresolution).} \\
 Eine endliche Menge $M$ von Hornklauseln ist unerfüllbar ~gdw.~ $\Box \in \textsf{ERes}^*(M)$.
 
 \par\noindent
@@ -783,7 +788,7 @@ Eine endliche Menge $M$ von Hornklauseln ist unerfüllbar ~gdw.~ $\Box \in \text
     \item[\textsfbf{Richtung {\boldmath "`$\Leftarrow$"'.}}]~
       (Korrektheit)
       \par
-      Wie im Resolutionssatz (\hyperlink{TBewResSatz}{\TBewResSatz}),
+      Wie im Resolutionssatz (\hyperlink{TBewResSatzKorr}{\TBewResSatzKorr}),
       denn man zeigt genauso: $\textsf{ERes}^*(M) \equiv M$.
     \item[\textsfbf{Richtung {\boldmath "`$\Rightarrow$"'.}}]~
       (Vollständigkeit)
@@ -880,7 +885,7 @@ Eine endliche Menge $M$ von Hornklauseln ist unerfüllbar ~gdw.~ $\Box \in \text
 
 \pagebreak
 % ===================================================================
-\section*{T1.18~ Beispiel DPLL-Algorithmus}
+\section*{T1.20~ Beispiel DPLL-Algorithmus}
 
 Sei $M = \big\{\{x_1, \neg x_2, x_3\},\, \{\neg x_1, x_2, \neg x_3\},\, \{\neg x_1, x_3, \neg x_4\},\, \{\neg x_1, x_3\}\big\}$.
 
@@ -982,7 +987,7 @@ Sei $M = \big\{\{x_1, \neg x_2, x_3\},\, \{\neg x_1, x_2, \neg x_3\},\, \{\neg x
 }}
 
 % ===================================================================
-\section*{T1.19~ Beispiel Hilbert-Kalkül}
+\section*{T1.21~ Beispiel Hilbert-Kalkül}
 
 Die Formel $x \to x$ ist herleitbar:
 
@@ -999,7 +1004,7 @@ Die Formel $x \to x$ ist herleitbar:
 \end{tabular}
 
 %% ===================================================================
-%\section*{T1.20~ Beispiel 4-Färbbarkeit}
+%\section*{T1.22~ Beispiel 4-Färbbarkeit}
 %
 %Der folgende ungerichtete Graph modelliert die Grenzbeziehungen europäischer Länder:
 %seine Knoten sind Ländernamen (im Bild mit den üblichen Kürzeln\footnote{\url{https://de.wikipedia.org/wiki/ISO-3166-1-Kodierliste}}),
@@ -1049,9 +1054,9 @@ Die Formel $x \to x$ ist herleitbar:
 %Dieser Graph ist planar, also kann er laut 4-Farben-Satz (endliche Variante) mit 4 Farben gefärbt werden -- probiert es aus.
 
 % ===================================================================
-\section*{T1.20~ Beweis 4-Farben-Satz (unendliche Variante)}
+\section*{T1.22~ Beweis 4-Farben-Satz (unendliche Variante)}
 
-\textsfbf{Theorem~1.43~ (4-Farben-Satz, allgemeine Graphen).} \\
+\textsfbf{Theorem~1.44~ (4-Farben-Satz, allgemeine Graphen).} \\
 Jeder (möglicherweise unendliche) planare Graph ist 4-färbbar.
 
 \par\noindent
@@ -1100,9 +1105,9 @@ Jeder (möglicherweise unendliche) planare Graph ist 4-färbbar.
 \end{beweis}%
 
 % ===================================================================
-\section*{T1.21~ Beweis Kompaktheitssatz}
+\section*{T1.23~ Beweis Kompaktheitssatz}
 
-\textsfbf{Theorem~1.40~ (Kompaktheitssatz).} \\
+\textsfbf{Theorem~1.41~ (Kompaktheitssatz).} \\
 Für alle (potentiell unendlichen) Mengen $\Gamma \subseteq \textsf{AL}$ gilt:
 \begin{center}
   $\Gamma$  ist erfüllbar gdw.\ jede endliche Teilmenge von $\Gamma$ erfüllbar ist.
@@ -1111,7 +1116,7 @@ Für alle (potentiell unendlichen) Mengen $\Gamma \subseteq \textsf{AL}$ gilt:
 \par\noindent
 \begin{beweis}
   Die Richtung "`$\Rightarrow$"' ist trivial,
-  wenn man sich die Definition der Erfüllbarkeit für Formel\emph{mengen} in Erinnerung ruft (Folie 70).
+  wenn man sich die Definition der Erfüllbarkeit für Formel\emph{mengen} in Erinnerung ruft (Folie~72).
 
   Um "`$\Leftarrow$"' zu zeigen,
   nennen wir fortan eine Menge $\Gamma \subseteq \textsf{AL}$ \emph{Limit-erfüllbar},
