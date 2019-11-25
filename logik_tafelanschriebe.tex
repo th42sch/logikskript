@@ -1847,13 +1847,14 @@ Die Zahlen 0 und 1 geben den Rückgabewert des jeweiligen Aufrufs an.
 Der Aufruf $\texttt{ausw}(\Amf,\beta,\varphi)$ liefert den Wert 1 zurück;
 also gilt $\Amf,\beta \models \varphi$.
 
+\begin{landscape}
 \begin{figure}
   \vspace*{-11pt}
   \begin{center}
     \begin{tikzpicture}[%
   %     parent anchor=east, child anchor=west, grow=east,
   %     sibling distance=15mm, level distance=15mm,
-      rotate=90,transform shape,
+      transform shape,
       every node/.style = {rectangle, rounded corners=1.5mm, draw=black, fill=black!10, inner sep=1.3mm, minimum size=4mm},
       level 1/.style = {sibling distance = 103mm, level distance = 30mm},
       level 2/.style = {sibling distance =  51mm, level distance = 30mm},
@@ -1949,7 +1950,7 @@ also gilt $\Amf,\beta \models \varphi$.
   \caption{Beispiellauf des Auswertungsalgorithmus}
   \label{fig:ausw}
 \end{figure}
-
+\end{landscape}
 
 % ===================================================================
 \section*{T2.11~ Korrektheit \& Platzbedarf des Auswertungsalgorithmus}
