@@ -9,6 +9,8 @@ Hier findet Ihr die Tafelanschriebe für die Vorlesung „Logik“. Wer Fehler f
 
 ## Versionsgeschichte für WiSe 2019/20
 
+**15.12.19**&nbsp; kleine Korrektur in T3.15
+
 **25.11.19**&nbsp; Für Bild in T2.10 „echtes“ Querformat verwendet; *keine* inhaltliche Änderung
 
 **26.10.19**&nbsp; Beweis Resolutionssatz umorganisiert und auf T1.15–T1.16 verteilt; folgende T1.17–T1.22 und darin enthaltene Verweise entsprechend umnummeriert. Betroffene Seiten: 12–19
