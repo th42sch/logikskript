@@ -9,7 +9,9 @@ Hier findet Ihr die Tafelanschriebe für die Vorlesung „Logik“. Wer Fehler f
 
 ## Versionsgeschichte für WiSe 2019/20
 
-**23.–24.1.20**&bsp; kleine Korrektur in T4.11, T4.23
+**6.5.20**&nbsp; kleine Korrekturen in T2.16, 
+
+**23.–24.1.20**&nbsp; kleine Korrektur in T4.11, T4.23
 
 **15.–16.12.19**&nbsp; kleine Korrektur in T3.15 und im fakultativen Tafelanschrieb (Bew. Lemma 3.22)
 
